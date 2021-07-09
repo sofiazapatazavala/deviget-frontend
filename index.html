@@ -15,17 +15,38 @@
       <div class="row">
         <div class="col">
           <h1>Reddit Top 50</h1>
-          <button type="button" name="button" class="btn btn-secondary">Get posts</button>
+          <!-- All of this will work asynchronously -->
+          <button id="get-posts" type="button" name="button" class="btn btn-secondary">Get posts</button>
+          <div class="" id="posts-content">
+
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Bootstrap JS - This is Vanilla JS, and it's used for this page's UI -->
+    <!-- Bootstrap JS - This is Vanilla JS, and it's only used for this page's UI -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
       // This is where the magic happens.
-      
+
+      // When the button gets clicked, the XHR is called using a function.
+      document.getElementById('get-posts').addEventListener('click', loadPosts);
+
+      function loadPosts(){
+        // The XHR object is created
+        var xhr = new XMLHttpRequest();
+        // Get the required information (we're testing with the provided JSON for now)
+        xhr.open('GET', 'top.json', true);
+        //
+        xhr.onload = function(){
+          if(this.status === 200) {
+            console.log(this.responseText);
+          }
+        }
+        // Sends the request
+        xhr.send()
+      }
     </script>
 
   </body>
