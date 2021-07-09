@@ -44,6 +44,13 @@
             document.getElementById('posts-content').innerHTML = this.responseText;
           }
         }
+
+
+        xhr.onerror = function(){
+          console.log(this.status);
+          document.getElementById('posts-content').innerHTML = this.responseText;
+        }
+
         // Sends the request
         xhr.send()
       }
