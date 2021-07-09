@@ -38,16 +38,21 @@
         var xhr = new XMLHttpRequest();
         // Get the required information (we're testing with the provided JSON for now)
         xhr.open('GET', 'top.json', true);
+
+        xhr.onprogress = function(){
+          console.log(xhr.readyState);
+        }
         //
         xhr.onload = function(){
           if(this.status === 200) {
+            console.log(xhr.readyState);
             document.getElementById('posts-content').innerHTML = this.responseText;
           }
         }
 
 
         xhr.onerror = function(){
-          console.log(this.status);
+          console.log(xhr.readyState);
           document.getElementById('posts-content').innerHTML = this.responseText;
         }
 
