@@ -41,7 +41,7 @@
         //
         xhr.onload = function(){
           if(this.status === 200) {
-            console.log(this.responseText);
+            document.getElementById('posts-content').innerHTML = this.responseText;
           }
         }
         // Sends the request
