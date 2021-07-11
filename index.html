@@ -17,9 +17,10 @@
           <h1>Reddit Top 50</h1>
           <!-- All of this will work asynchronously -->
           <button id="get-posts" type="button" name="button" class="btn btn-secondary">Get posts</button>
-          <div class="" id="posts-content">
-          </div>
         </div>
+      </div>
+      <div class="row" id="posts-content">
+
       </div>
     </div>
 
@@ -46,9 +47,9 @@
 
             // Loop for getting posts' ID
             for(var i in posts.data.children){
-              output += '<ul>' +
-                '<li>Post:' + posts.data.children[i].data.id + '</li>' +
-                '</ul>';
+              output += '<div class="col-sm-6"><div class="card my-2">' +
+                'Post: ' + posts.data.children[i].data.id +
+                '</div></div>';
             }
 
             document.getElementById('posts-content').innerHTML = output;
