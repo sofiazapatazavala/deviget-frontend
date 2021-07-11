@@ -18,7 +18,6 @@
           <!-- All of this will work asynchronously -->
           <button id="get-posts" type="button" name="button" class="btn btn-secondary">Get posts</button>
           <div class="" id="posts-content">
-
           </div>
         </div>
       </div>
@@ -36,24 +35,25 @@
       function loadPosts(){
         // The XHR object is created
         var xhr = new XMLHttpRequest();
-        // Get the required information (we're testing with the provided JSON for now)
-        xhr.open('GET', 'top.json', true);
+        // Get the required information (now with 50 posts directly from the API)
+        xhr.open('GET', 'https://api.reddit.com/top?limit=50', true);
 
-        xhr.onprogress = function(){
-          console.log(xhr.readyState);
-        }
-        //
         xhr.onload = function(){
           if(this.status === 200) {
-            console.log(xhr.readyState);
-            document.getElementById('posts-content').innerHTML = this.responseText;
+            var posts = JSON.parse(this.responseText);
+
+            var output = '';
+
+            // Loop for getting posts' ID
+            for(var i in posts.data.children){
+              output += '<ul>' +
+                '<li>Post:' + posts.data.children[i].data.id + '</li>' +
+                '</ul>';
+            }
+
+            document.getElementById('posts-content').innerHTML = output;
+
           }
-        }
-
-
-        xhr.onerror = function(){
-          console.log(xhr.readyState);
-          document.getElementById('posts-content').innerHTML = this.responseText;
         }
 
         // Sends the request
