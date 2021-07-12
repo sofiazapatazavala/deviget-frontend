@@ -53,21 +53,26 @@
             output += '<div class="col-xs-12"><button type="button" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;" class="btn btn-danger my-3 mr-3">Close all posts (irreversible!)</button><button class="btn btn-secondary m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasList" aria-controls="offcanvasList">List of posts</button></div>';
             // Loop for getting posts' ID
             for(var i in posts.data.children){
-              var post_date = posts.data.children[i].data.created;
+              var post_date = new Date(posts.data.children[i].data.created * 1000);
 
               // Outputs everything. Just one type of output, for now.
               output += '<div class="col-sm-6 col-md-3"><div class="card my-2" id="'+posts.data.children[i].data.name+'">' +
                 '<div class="card-header text-right"><button id="close-'+posts.data.children[i].data.name+'" type="button" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;" class="btn-close" aria-label="Close"></button></div>' +
-                '<a href="' + posts.data.children[i].data.url + '" target="_blank">' +
-                '<img src="'+ posts.data.children[i].data.thumbnail +'" class="card-img-top"></a>' +
-                '<div class="card-body"><h2 class="h5">'+ posts.data.children[i].data.title +'</h2>' +
+                '<a href="' + posts.data.children[i].data.url + '" target="_blank">';
+
+                if (posts.data.children[i].data.thumbnail == "nsfw"){
+                  output += '<img src="img/nsfw.svg" class="card-img-top"></a>'
+                } else if (posts.data.children[i].data.thumbnail == "self") {
+                  output += '<img src="img/link.svg" class="card-img-top"></a>'
+                } else {
+                  output += '<img src="'+ posts.data.children[i].data.thumbnail +'" class="card-img-top"></a>'
+                };
+
+                output += '<div class="card-body"><h2 class="h5">'+ posts.data.children[i].data.title +'</h2>' +
                 '<h3 class="h6 card-text">'+posts.data.children[i].data.author+'</h3>' +
                 '<p class="card-text"><small>'+posts.data.children[i].data.num_comments+' comments</small></p>' +
                 '</div>' +
-                '<div class="card-footer"> ' + posts.data.children[i].data.name + ' / '+ posts.data.children[i].data.post_hint +
-                '<br>' +
-                post_date +
-                '</div>' +
+                '<div class="card-footer"> ' + post_date.toLocaleString() + '</div>' +
                 '</div></div>';
 
             };
