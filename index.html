@@ -47,8 +47,21 @@
 
             // Loop for getting posts' ID
             for(var i in posts.data.children){
-              output += '<div class="col-sm-6"><div class="card my-2">' +
-                'Post: ' + posts.data.children[i].data.id +
+              var post_date = posts.data.children[i].data.created;
+
+
+              // Outputs everything. Just one type of output, for now.
+              output += '<div class="col-sm-6 col-md-3"><div class="card my-2">' +
+                '<a href="' + posts.data.children[i].data.url + '" target="_blank">' +
+                '<img src="'+ posts.data.children[i].data.thumbnail +'" class="card-img-top"></a>' +
+                '<div class="card-body"><h2 class="h5">'+ posts.data.children[i].data.title +'</h2>' +
+                '<h3 class="h6 card-text">'+posts.data.children[i].data.author+'</h3>' +
+                '<p class="card-text"><small>'+posts.data.children[i].data.num_comments+' comments</small></p>' +
+                '</div>' +
+                '<div class="card-footer"> ' + posts.data.children[i].data.name + ' / '+ posts.data.children[i].data.post_hint +
+                '<br>' +
+                post_date +
+                '</div>' +
                 '</div></div>';
             }
 
