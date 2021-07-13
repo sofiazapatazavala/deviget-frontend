@@ -22,11 +22,11 @@ A working version of this repo is available at https://szz.cl/deviget-frontend/.
 
 ## Additional notes
 
-- This file is using Bootstrap as a front-end framework. Since what's being tested is the developer's Javascript skills, it wasn't considered to be a problem. Also, no Javascript functions were used, just the grid and some components (cards & offcanvas). Lastly, this version (Bootstrap 5) was developed in Native Javascript, so work was done without any dependencies.
+- This repo is using Bootstrap as a front-end framework. There are reasons for this: It doesn't interfere with what's being tested (the developer's Javascript skills), no Javascript functions were used (just the grid and some components, cards and offcanvas), and this version (Bootstrap 5) was developed in native Javascript, so this repo still doesn't have any dependencies.
 - Those photos or videos that are marked as NSFW are not shown in this page. When clicking on the thumbnail, the marked media will be shown.
 - Posts without a thumbnail will include a "link" image. Clicking on it will show the respective post.
 
 ## Licenses
 
-- [Bootstrap is released under the MIT license and is copyright 2021 Twitter](https://getbootstrap.com/docs/4.0/about/license/). Used under the terms of this license.
+- [Bootstrap is released under the MIT license and is copyright 2021 Twitter](https://getbootstrap.com/docs/5.0/about/license/). Used under the terms of this license.
 - Images use graphics from Twemoji. [Copyright 2019 Twitter, Inc and other contributors](https://github.com/twitter/twemoji). Graphics are licensed under the [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) and are used under these terms.
