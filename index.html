@@ -14,9 +14,10 @@
     <div class="container">
       <div class="row">
         <div class="col">
+          <!-- Title and some dummy content -->
           <h1>Reddit Top 50</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <!-- All of this will work asynchronously -->
+          <!-- Button to get posts. All of this will work asynchronously. -->
           <button id="get-posts" type="button" name="button" class="btn btn-primary btn-block">Get posts</button>
         </div>
       </div>
@@ -44,22 +45,32 @@
         xhr.open('GET', 'https://api.reddit.com/top?limit=50', true);
 
         xhr.onload = function(){
+
+          // Checks for a proper response from Reddit
           if(this.status === 200) {
+
+            // Parses the JSON response
             var posts = JSON.parse(this.responseText);
 
+            // Creates objects
             var output = '';
             var offcanvasOutput = '';
 
+            // Buttons: Close all posts, list of posts.
             output += '<div class="col-xs-12"><button type="button" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;" class="btn btn-danger my-3 mr-3">Close all posts (irreversible!)</button><button class="btn btn-secondary m-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasList" aria-controls="offcanvasList">List of posts</button></div>';
-            // Loop for getting posts' ID
+
+            // Loop for showing posts.
             for(var i in posts.data.children){
+
+              // Variable to convert post's date.
               var post_date = new Date(posts.data.children[i].data.created * 1000);
 
-              // Outputs everything. Just one type of output, for now.
+              // Outputs the card.
               output += '<div class="col-sm-6 col-md-3"><div class="card my-2" id="'+posts.data.children[i].data.name+'">' +
                 '<div class="card-header text-right"><button id="close-'+posts.data.children[i].data.name+'" type="button" onclick="this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;" class="btn-close" aria-label="Close"></button></div>' +
                 '<a href="' + posts.data.children[i].data.url + '" target="_blank">';
 
+                // Checks if the post is NSFW or doesn't have a thumbnail. It shows the thumbnail if there's no special case.
                 if (posts.data.children[i].data.thumbnail == "nsfw"){
                   output += '<img src="img/nsfw.svg" class="card-img-top"></a>'
                 } else if (posts.data.children[i].data.thumbnail == "self") {
@@ -77,6 +88,7 @@
 
             };
 
+            // Outputs the list of posts.
             offcanvasOutput += '<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasList" aria-labelledby="offcanvasListLabel">'+
               '<div class="offcanvas-header">'+
                 '<h5 class="offcanvas-title" id="offcanvasListLabel">List</h5><button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>'+
@@ -84,12 +96,14 @@
               '<div class="offcanvas-body">'+
                 '<div><ul>';
 
+                // Loops the list of posts, to get each post.
                 for(var i in posts.data.children){
                   offcanvasOutput += '<a href="'+posts.data.children[i].data.url+'"><li>'+ posts.data.children[i].data.title +'</li></a>';
                 };
 
             offcanvasOutput += '</ul></div></div></div>';
 
+            // Puts everything into the document.
             document.getElementById('posts-content').innerHTML = output;
             document.getElementById('offcanvas-content').innerHTML = offcanvasOutput;
 

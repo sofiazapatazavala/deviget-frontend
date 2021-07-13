@@ -1,54 +1,32 @@
-# Front-end Test
+# Readme: Front-end Test
 
-## Objective
-We would like to have you complete the following code test so we can evaluate your Front-end skills.  Please place your code in a public Github repository and commit each step of your process so we can review it.
+This file describes the developer's answer to the code challenge of showing Reddit's 50 top posts right now.
 
-Your assignment is to create a simple Reddit client that shows the top 50 entries from Reddit - www.reddit.com/top
+## Installation
 
-## Show your work
+- Clone this repo.
+- Upload the folder to any static or dynamic hosting service.
+- There's no step 3. Every piece of code is contained in the HTML file, so it should work.
 
-1.  Create a Public repository
-2.  Commit each step of your process so we can follow your thought process.
+## Demo
+.
+A working version of this repo is available at https://szz.cl/deviget-frontend/.
 
-## What to show
-To do this please follow these guidelines and use the front-end technology we talked about during your interview (Specific Javascript Framework).  If you are using ReactJS, you must incorporate Redux.
+## Usage
 
-The app should be able to show data from each entry such as:
+- Click on "Get posts" to get the posts.
+- Each post will be shown in a card. You can check the thumbnail, title, author, comments, and local submission date. When clicking the thumbnail you will see the full-sized media or link.
+- When pressing "List of posts", you will see a list of all 50 posts. When clicking one of the titles, you will see the full-sized media or link.
+- To close one card, just click on the x button. If you want to get that one card again, you will have to click on the "get posts" button and reload every post.
+- To close all cards, press the button "close all posts". This will remove all posts, and it's irreversible. You will have to reload the page to get all posts again.
 
-    - Title (at its full length, so take this into account when sizing your cells)
-    - Author
-    - entry date, following a format like “x hours ago” 
-    - A thumbnail for those who have a picture.
-    - Number of comments
-    - Unread status
+## Additional notes
 
-In addition, for those having a picture (besides the thumbnail), please allow the user to tap on the thumbnail to be sent to the full sized picture.
+- This file is using Bootstrap as a front-end framework. Since what's being tested is the developer's Javascript skills, it wasn't considered to be a problem. Also, no Javascript functions were used, just the grid and some components (cards & offcanvas). Lastly, this version (Bootstrap 5) was developed in Native Javascript, so work was done without any dependencies.
+- Those photos or videos that are marked as NSFW are not shown in this page. When clicking on the thumbnail, the marked media will be shown.
+- Posts without a thumbnail will include a "link" image. Clicking on it will show the respective post.
 
-## What to Include
+## Licenses
 
-    - Pagination support
-    - Saving pictures in the picture gallery
-    - App state-preservation/restoration
-    - Indicator of unread/read post (updated status, after post it’s selected)
-    - Dismiss Post Button (remove the cell from list. Animations required)
-    - Dismiss All Button (remove all posts. Animations required)
-    - Support split layout (left side: all posts / right side: detail post)
-    - Responsive design
-
-## Resources
-
-    - Reddit API - http://www.reddit.com/dev/api
-    - Example JSON file (top.json) is listed.
-    - Example Video of functionality is attached
-    
-## Deliverables we expect:
-* URL where the app can be viewed and seen working (use any platform of your preference: heroku.com, aws.amazon.com, etc)
-* Code in a public Github repo
-* README file with the decisions taken and important notes
-    
-## Time Spent
-You need to fully complete the challenge. We suggest not to spend more than 3 days total.  Please make commits as often as possible so we can see the time you spent and please do not make one commit.  We will evaluate the code and time spent.
- 
-What we want to see is how well you handle yourself given the time you spend on the problem, how you think, and how you prioritize when time is sufficient to solve everything.
-
-Please email your solution as soon as you have completed the challenge or the time is up.
+- [Bootstrap is released under the MIT license and is copyright 2021 Twitter](https://getbootstrap.com/docs/4.0/about/license/). Used under the terms of this license.
+- Images use graphics from Twemoji. [Copyright 2019 Twitter, Inc and other contributors](https://github.com/twitter/twemoji). Graphics are licensed under the [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/) and are used under these terms.
